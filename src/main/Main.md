@@ -8,6 +8,9 @@ Enter your name here: Caio Heusi
 
 ## The best animals
 
-1. Cat
-2. Dog
-3. Bird
+1. Axolotl
+2. Bird
+3. Bonobo
+4. Capybara
+5. Cat
+6. Dog
