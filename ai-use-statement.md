@@ -1,5 +1,4 @@
 # AI Use Statement
 
-Replace this with your AI use statement (see your lab instructions). 
-
-Failure to include an AI use statement may result in a grade deduction of up to 100% on this lab.
+I started a little conversation to help me figure out some things. It was good because i show to myself that my understanding level is good.
+https://chatgpt.com/share/6971c13a-f960-800c-81cb-69b11dd995d0
