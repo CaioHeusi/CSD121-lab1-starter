@@ -5,6 +5,9 @@ import java.util.Scanner;
 
 import tictactoe.game.Board;
 import tictactoe.game.Position;
+import com.diogonunes.jcolor.*;
+
+import static com.diogonunes.jcolor.Attribute.*;
 
 /**
  * Helper methods for doing console-based user interaction
@@ -28,13 +31,13 @@ public class Console {
         return scanner.nextLine();
     }
 
-    /**
-     * Display an alert message to the user
-     * @param message The message to display
-     */
-    public static void printAlert(String message) {
-        IO.println(message);
-    }
+//    /**
+//     * Display an alert message to the user
+//     * @param message The message to display
+//     */
+//    public static void printAlert(String message) {
+//        IO.println(message);
+//    }
 
     /**
      * Repeatedly prompt the user for a position on which to place their next token.
@@ -45,7 +48,7 @@ public class Console {
      */
     public static Position promptForPosition(String prompt, Board board) {
 
-        final String helpMessage = "Input must be in the format 'row column', e.g., '1 2' or 't m' for the top middle cell.";
+//        final String helpMessage = "Input must be in the format 'row column', e.g., '1 2' or 't m' for the top middle cell.";
 
         while ( true ) {
             var input = IO.readln(prompt).trim();
@@ -56,13 +59,18 @@ public class Console {
                 var pos = Position.parse(input);
 
                 if (! board.isEmptyAt(pos)) {
-                    printAlert("That position is already taken.");
+//                    printAlert("That position is already taken.");
+                    AnsiFormat fError = new AnsiFormat(BLACK_TEXT(), RED_BACK(), BOLD(), UNDERLINE());
+                    System.out.println(fError.format("That position is already taken."));
                     continue;
+
                 }
 
                 return pos;
             } catch ( ParseException e ) {
-                printAlert(helpMessage);
+//                printAlert(helpMessage);
+                AnsiFormat fError = new AnsiFormat(BLACK_TEXT(), RED_BACK(), BOLD(), UNDERLINE());
+                System.out.println(fError.format("Input must be in the format 'row column', e.g., '1 2' or 't m' for the top middle cell."));
             }
         }
     }

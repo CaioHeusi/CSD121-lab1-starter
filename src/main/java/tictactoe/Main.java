@@ -1,9 +1,12 @@
 package tictactoe;
 
+import com.diogonunes.jcolor.AnsiFormat;
 import tictactoe.game.TicTacToeGame;
 import tictactoe.game.Position;
 import tictactoe.ui.Console;
 
+import static com.diogonunes.jcolor.Attribute.*;
+import static com.diogonunes.jcolor.Attribute.UNDERLINE;
 import static tictactoe.game.TicTacToeGame.Status.*;
 
 class Main {
@@ -28,7 +31,9 @@ class Main {
                 if (game.isValidPosition(pos)) {
                     break;
                 }
-                Console.printAlert("That position is not valid. Please enter a valid position.");
+//                Console.printAlert("That position is not valid. Please enter a valid position.");
+                AnsiFormat fError = new AnsiFormat(BLACK_TEXT(), RED_BACK(), BOLD(), UNDERLINE());
+                System.out.println(fError.format("That position is not valid. Please enter a valid position."));
             }
 
             Console.println("%s plays %s at %s %s".formatted(player.name(), player.token(), pos.row(), pos.col()));

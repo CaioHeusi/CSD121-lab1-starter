@@ -101,11 +101,34 @@ public class Board {
                 return Optional.of(board[0][i]);
             }
         }
+        /*
+            I'm experiencing the bug that lab in part 4.5 advised in one of my diagonals test.
+
+            As is written in Optional.java, the .orElseThrow() method says that will return the value if is present,
+        so it should return X or O.But in my case, it was crashing and providing errors. This means he was trying to
+        find an object inside the "box", but it was empty, and the method crashes because doesn't know how to handle
+        with it.
+
+            In the .orElseThrow() method description, it mentions that it could lead to a NullPointerException if the
+        exception supplier is null, but what I actually received was a NoSuchElementException because the value itself
+        was missing. This is actually good! If it just returned a null value silently, I probably would not understand
+        where this bug came from, or I would get a crash much later in the code.
+
+            java.util.NoSuchElementException: No value present // This confirm the box was empty
+
+            This just tells me that my code failed to put X or O inside this box when it should have. Since this error
+        happened in one of my diagonals tests, it was reasonable to start checking that specific part of the logic.
+
+            The error was in the second if conditional. This is a diagonal check, which means it should compare the
+        Top-Left and Top-Right corners with the Center to ensure they are the same. Inside the if parameter, the last
+        comparison was looking at the wrong position of the table, causing the detection to fail and the test to crash.
+         */
+
         // Check the diagonals
         if (board[0][0] != null && board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
             return Optional.of(board[0][0]);
         }
-        if (board[0][2] != null && board[0][2] == board[1][1] && board[1][1] == board[1][0]) {
+        if (board[0][2] != null && board[0][2] == board[1][1] && board[1][1] == board[2][0]) {
             return Optional.of(board[0][2]);
         }
         return Optional.empty();
