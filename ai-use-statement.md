@@ -1,4 +1,4 @@
 # AI Use Statement
 
-Replace this with your AI Use Statement, which is required **WHETHER OR NOT** you used AI.
-Failure to include this statement will result in a reduced grade of up to 100%.
+I start a conversation to help me understand better the lab and the steps to complete it. It helped me a bit, but I feel that was not too necessary.
+https://chatgpt.com/share/69b8ede2-6540-800c-b664-95bbde5fb167

@@ -2,7 +2,10 @@ package tictactoe.ui;
 
 import tictactoe.game.*;
 import com.diogonunes.jcolor.AnsiFormat;
+import tictactoe.game.player.HumanPlayer;
 import tictactoe.game.player.Player;
+import tictactoe.game.player.Linus;
+import tictactoe.game.player.Omola;
 
 import java.text.ParseException;
 
@@ -65,21 +68,31 @@ public class Console {
      */
     public static Player promptForPlayer(Token whichPlayer) {
 
-        var helpMessage = "To make a computer player, use the format '@<name>' where <name> is one of Linus, Omla, Optimus, or Randy.";
+        var helpMessage = """
+                Enter your name, or use: 
+                @Linus - will pick first available position. (Basic)
+                @Omola - looks one move ahead. (Advanced)
+                """;
 
         while ( true ) {
-            var input = prompt(fPrompt.format("Who will play " + whichPlayer + "? "));
+            var input = prompt("Who will play " + whichPlayer + "? ").trim();
 
             // Handle computer players
             if ( input.startsWith("@") ) {
-                input = input.substring(1).toLowerCase(); // remove the '@' prefix
+                input = input.substring(1).trim().toLowerCase(); // remove the '@' prefix
 
                 switch ( input ) {
                     // TODO: add cases here for the different computer players you implement
+                    case "linus" -> {
+                        return new Linus(whichPlayer);
+                    }
+                    case "omola" -> {
+                        return new Omola(whichPlayer);
+                    }
                     default -> printAlert(helpMessage);
                 }
             } else {
-                return new Player(input, whichPlayer);
+                return new HumanPlayer(input, whichPlayer);
             }
         }
     }

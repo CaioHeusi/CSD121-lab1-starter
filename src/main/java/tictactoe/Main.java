@@ -11,6 +11,10 @@ class Main {
     static void main() {
 
         Console.println("Welcome to Tic Tac Toe!");
+        Console.println("Human player: Type your name...");
+        Console.println("Compute Players: ");
+        Console.println("@Linus - will pick first available position. (Basic AI)");
+        Console.println("@Omola - looks one move ahead. (Advanced AI)");
         var playerX = Console.promptForPlayer(Token.X);
         var playerO = Console.promptForPlayer(Token.O);
         var game = new TicTacToeGame(playerX, playerO);
