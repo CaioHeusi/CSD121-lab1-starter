@@ -1,40 +1,41 @@
-package tictactoe.game.player;
+package tictactoe.game.player; // package that this class belongs to
 
-import tictactoe.game.Board;
-import tictactoe.game.Position;
-import tictactoe.game.Token;
-import tictactoe.ui.Console;
+import tictactoe.game.Board; // import class board to use in getNextMove()
+import tictactoe.game.Position; // import class Position to getNextMove() return a position
+import tictactoe.game.Token; // import token to hold X or O
 
 /**
  * Abstract base class for all TicTacTore players
  */
-public abstract class Player {
+public abstract class Player { // base class for all Players type
 
-    private final String name;
-    private final Token token;
+    private final String name; // store player's name
+    private final Token token; // store player's token like, X or O
 
     /**
      * Create a player with given name and token
      * @param name Player name
      * @param token Player token
      */
-    public Player(String name, Token token) {
-        this.name = name;
-        this.token = token;
+    public Player(String name, Token token) { // constructor of Player class
+        this.name = name; // store the name in name attribute
+        this.token = token; // store token in token attribute
     }
 
     /**
      * @return Player name
      */
-    public String name() {
-        return name;
+    public String name() { // return player's name
+
+        return name; // return stored name
     }
 
     /**
      * @return Player token
      */
-    public Token token() {
-        return token;
+    public Token token() { // return player's token
+
+        return token; // return stored token
     }
 
     /**
@@ -42,7 +43,10 @@ public abstract class Player {
      * @param board current board state
      * @return chosen position
      */
-    public abstract Position getNextMove(Board board);
+    public abstract Position getNextMove(Board board); // each subclass needs to implement your own way to getNextMove()
+
+
+    // old code which was human logic direct in Player, that were moved to HumanPlayer.java
 //    /**
 //     * Prompts the player to pick their next move.
 //     * Will continue to prompt until the player picks a valid move (i.e. an empty position on the board)
